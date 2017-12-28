@@ -45,6 +45,11 @@
             android:name=".activity.VideoPlayerActivity"
             android:label="Constraint">
         </activity>
+
+        <activity
+            android:name=".activity.VideoAnalyzerActivity"
+            android:label="Constraint">
+        </activity>
     </application>
 
 </manifest>

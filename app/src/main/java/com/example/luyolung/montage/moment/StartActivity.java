@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.example.luyolung.montage.moment.activity.ConstraintLayoutActivity;
 import com.example.luyolung.montage.moment.activity.MyTakePhotoDelegateActivity;
+import com.example.luyolung.montage.moment.activity.VideoAnalyzerActivity;
 import com.example.luyolung.montage.moment.activity.VideoPlayerActivity;
 import com.my.core.protocol.IDrawerViewLayout;
 import com.my.core.protocol.IProgressBarView;
@@ -31,11 +32,12 @@ public class StartActivity
     implements IProgressBarView {
 
     static final int NAVIGATE_TAKE_VIDEO = 0;
-    static final int NAVIGATE_WATCH_VIDEO = 1;
+    static final int NAVIGATE_ANALYSIS_VIDEO = 1;
+    static final int NAVIGATE_WATCH_VIDEO = 2;
 
     Toolbar mToolbar;
     ListView mStartMenu;
-    private String mVideoPath = "";
+    private String mVideoPath = "/storage/emulated/0/Movies/Montage Moment/20171228_150330-1246878005.mp4";
 
 
     @Override
@@ -163,25 +165,25 @@ public class StartActivity
                         }
                     }),
                 new SampleMenuItem(
+                    "Video Analyze",
+                    "GOGO~",
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(StartActivity.this, VideoAnalyzerActivity.class);
+                            intent.putExtra(VideoAnalyzerActivity.DATA_VIDEO_PATH, mVideoPath);
+                            startActivityForResult(intent, NAVIGATE_ANALYSIS_VIDEO);
+                        }
+                    }),
+                new SampleMenuItem(
                     "Video Player",
-                    "GOGO",
+                    "Play",
                     new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
                             intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, mVideoPath);
                             startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
-                        }
-                    }),
-                new SampleMenuItem(
-                    "Constraint Layout",
-                    "Practice on every kind of constraint relationship.\n",
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(StartActivity.this,
-                                                     ConstraintLayoutActivity.class)
-                                              .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }
                     }),
             });
