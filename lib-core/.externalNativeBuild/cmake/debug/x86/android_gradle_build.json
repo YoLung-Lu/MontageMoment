@@ -1,0 +1,47 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/Users/luyolung/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/luyolung/AndroidStudio3/MontageMoment/lib-core/.externalNativeBuild/cmake/debug/x86 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"my_core_jni-Debug-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "my_core_jni",
+			"buildCommand" : "/Users/luyolung/Library/Android/sdk/cmake/3.6.3155560/bin/cmake --build /Users/luyolung/AndroidStudio3/MontageMoment/lib-core/.externalNativeBuild/cmake/debug/x86 --target my_core_jni",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=/Users/luyolung/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/luyolung/Library/Android/sdk/ndk-bundle/sysroot  -Dmy_core_jni_EXPORTS -I/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp -I/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/android/support/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=16 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -frtti -fexceptions  -fexceptions -std=c++11 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp/jni.cpp",
+					"workingDirectory" : "/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=/Users/luyolung/Library/Android/sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/luyolung/Library/Android/sdk/ndk-bundle/sysroot  -Dmy_core_jni_EXPORTS -I/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp -I/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/android/support/include -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/luyolung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=16 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -frtti -fexceptions  -fexceptions -std=c++11 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp/profiler.cpp",
+					"workingDirectory" : "/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/.externalNativeBuild/cmake/debug/x86"
+				}
+			],
+			"output" : "/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/build/intermediates/cmake/debug/obj/x86/libmy_core_jni.so",
+			"toolchain" : "5640803104828476882"
+		}
+	},
+	"toolchains" : 
+	{
+		"5640803104828476882" : 
+		{
+			"cCompilerExecutable" : "/Users/luyolung/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/luyolung/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

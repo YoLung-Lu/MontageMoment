@@ -1,0 +1,63 @@
+apply plugin: "com.android.library"
+
+// Gradle doc:
+// http://google.github.io/android-gradle-dsl/
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    // For application security and in-app-purchasing.
+//    signingConfigs {
+//        release {
+//            keyAlias 'pc-release'
+//            storeFile new File(project.ANDROID_SIGNING_CONFIG_PATH)
+//            storePassword ""
+//            keyPassword ""
+//        }
+//    }
+
+    buildTypes {
+        release {
+            // Enable the application signing.
+//            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    dataBinding { enabled = true }
+}
+
+repositories {
+    // Support AAR file in the libs directory.
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    compile fileTree(dir: "libs", include: ["*.jar"])
+
+    // Google Support Library.
+    compile rootProject.ext.dep.supportAppcompatV7
+    compile rootProject.ext.dep.supportRecyclerViewV7
+    compile rootProject.ext.dep.supportCardViewV7
+    compile rootProject.ext.dep.supportGridLayoutV7
+    compile rootProject.ext.dep.supportPercent
+    compile rootProject.ext.dep.supportDesign
+    compile rootProject.ext.dep.supportVectorDrawable
+    compile rootProject.ext.dep.supportConstraintLayout
+    compile rootProject.ext.dep.supportTransition
+
+    // My lib-widget
+    compile project(":lib-widget")
+//    compile(name: "lib-widget-release", ext: "aar")
+}

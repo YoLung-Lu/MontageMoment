@@ -1,0 +1,5 @@
+include ':app',
+        ':lib-core',
+        ':lib-reactive',
+        ':lib-widget',
+        ':lib-component'

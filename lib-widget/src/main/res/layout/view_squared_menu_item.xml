@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:layout_gravity="center"
+    tools:layout_height="120dp"
+    tools:layout_width="120dp">
+
+    <!-- Icon -->
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        app:layout_heightPercent="33%"
+        app:layout_marginTopPercent="21%"
+        app:layout_widthPercent="100%"
+        app:srcCompat="@drawable/icon_settings"/>
+
+    <!-- Notification badge -->
+    <FrameLayout
+        android:id="@+id/icon_noti_badge"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:layout_marginTopPercent="18%"
+        tools:visibility="visible">
+
+        <FrameLayout
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/bg_circle_red"
+            app:layout_marginTopPercent="18%"/>
+    </FrameLayout>
+
+    <!-- Caption -->
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:maxLines="2"
+        android:maxWidth="68dp"
+        android:text="@string/menu_settings"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        tools:ignore="MissingPrefix"/>
+</merge>

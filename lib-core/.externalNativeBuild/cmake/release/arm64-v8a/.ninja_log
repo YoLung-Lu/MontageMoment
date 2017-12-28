@@ -1,0 +1,4 @@
+# ninja log v5
+0	296	0	CMakeFiles/my_core_jni.dir/jni.cpp.o	800487daa49bc7da
+2	1220	0	CMakeFiles/my_core_jni.dir/profiler.cpp.o	d247eef7c42aa5e9
+1222	1307	0	/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/build/intermediates/cmake/release/obj/arm64-v8a/libmy_core_jni.so	414bcb65e6a3d664

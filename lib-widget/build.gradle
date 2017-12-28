@@ -1,0 +1,48 @@
+apply plugin: "com.android.library"
+
+// Gradle doc:
+// http://google.github.io/android-gradle-dsl/
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: "libs", include: ["*.jar"])
+
+    // Google Support Library.
+    compile rootProject.ext.dep.supportAppcompatV7
+    compile rootProject.ext.dep.supportRecyclerViewV7
+    compile rootProject.ext.dep.supportGridLayoutV7
+    compile rootProject.ext.dep.supportCardViewV7
+    compile rootProject.ext.dep.supportDesign
+    compile rootProject.ext.dep.supportVectorDrawable
+    compile rootProject.ext.dep.supportPercent
+
+    // My Library.
+    compile project(":lib-core")
+    compile project(":lib-reactive")
+//    compile(name: "lib-core-release", ext: "aar")
+
+    // Image loader.
+    compile rootProject.ext.dep.glide
+}
