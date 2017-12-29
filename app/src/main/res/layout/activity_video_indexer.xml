@@ -1,21 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ViewSwitcher
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/switcher"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.luyolung.montage.moment.activity.VideoIndexerActivity">
+    android:orientation="vertical">
 
-    <ScrollView
+    <!-- Web processing -->
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbarStyle="insideOverlay"
-        android:scrollbars="horizontal|vertical">
+        tools:context="com.example.luyolung.montage.moment.activity.VideoIndexerActivity">
+
 
         <TextView
             android:id="@+id/indexer_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
-</android.support.constraint.ConstraintLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_gap"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Play video -->
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/constraint1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <VideoView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:id="@+id/VideoView"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:text="Play"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@id/button"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintTop_toBottomOf="@id/VideoView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/image"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/VideoView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/button"
+            app:layout_constraintRight_toLeftOf="@+id/text"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@id/text"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/VideoView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</ViewSwitcher>
