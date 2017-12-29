@@ -50,7 +50,6 @@ public class StartActivity
 
     private ProgressDialog mProgressDialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,8 +199,17 @@ public class StartActivity
                     new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
+                            Intent intent = new Intent(StartActivity.this,
+                                                       VideoPlayerActivity.class);
                             intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, mVideoPath);
+
+                            intent.putStringArrayListExtra(
+                                VideoPlayerActivity.DATA_KEYWORD_LIST,
+                                getKeywordList());
+                            intent.putIntegerArrayListExtra(
+                                VideoPlayerActivity.DATA_KEYWORD_TIME_LIST,
+                                getKeywordTimeList());
+
                             startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
                         }
                     }),
@@ -306,5 +314,21 @@ public class StartActivity
             imageList.add(path + "/Obama/obama" + j + ".jpg");
         }
         return imageList;
+    }
+
+    public ArrayList<String> getKeywordList() {
+        ArrayList<String> keywordList = new ArrayList<>();
+        for (int j = 0; j < 3; j++) {
+            keywordList.add("Obama ~~~ "+j);
+        }
+        return keywordList;
+    }
+
+    public ArrayList<Integer> getKeywordTimeList() {
+        ArrayList<Integer> keywordTimeList = new ArrayList<>();
+        for (int j = 0; j < 3; j++) {
+            keywordTimeList.add(1100*(j+1));
+        }
+        return keywordTimeList;
     }
 }
