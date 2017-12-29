@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.luyolung.montage.moment.activity.ConstraintLayoutActivity;
 import com.example.luyolung.montage.moment.activity.MyTakePhotoDelegateActivity;
 import com.example.luyolung.montage.moment.activity.VideoAnalyzerActivity;
+import com.example.luyolung.montage.moment.activity.VideoIndexerActivity;
 import com.example.luyolung.montage.moment.activity.VideoPlayerActivity;
 import com.my.core.protocol.IDrawerViewLayout;
 import com.my.core.protocol.IProgressBarView;
@@ -34,6 +35,7 @@ public class StartActivity
     static final int NAVIGATE_TAKE_VIDEO = 0;
     static final int NAVIGATE_ANALYSIS_VIDEO = 1;
     static final int NAVIGATE_WATCH_VIDEO = 2;
+    static final int NAVIGATE_VIDEO_INDEXER = 4;
 
     Toolbar mToolbar;
     ListView mStartMenu;
@@ -184,6 +186,17 @@ public class StartActivity
                             Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
                             intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, mVideoPath);
                             startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
+                        }
+                    }),
+                new SampleMenuItem(
+                    "Video Indexer",
+                    "Get annotation with Bing",
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View v){
+                            Intent intent = new Intent(StartActivity.this, VideoIndexerActivity.class);
+                            intent.putExtra(VideoIndexerActivity.VIDEO_PATH, mVideoPath);
+                            startActivityForResult(intent, NAVIGATE_VIDEO_INDEXER);
                         }
                     }),
             });
