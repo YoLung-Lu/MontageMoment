@@ -1,14 +1,14 @@
-Executable : /Users/jimytc/work/tools/adt-bundle-mac-x86_64-20140624/sdk/cmake/3.6.4111459/bin/cmake
+Executable : /Users/luyolung/Library/Android/sdk/cmake/3.6.3155560/bin/cmake
 arguments : 
--H/Users/jimytc/work/cblue/hack-projects/montage-moment/lib-core/src/main/cpp
--B/Users/jimytc/work/cblue/hack-projects/montage-moment/lib-core/.externalNativeBuild/cmake/debug/x86_64
+-H/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/src/main/cpp
+-B/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/.externalNativeBuild/cmake/debug/x86_64
 -DANDROID_ABI=x86_64
 -DANDROID_PLATFORM=android-21
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/jimytc/work/cblue/hack-projects/montage-moment/lib-core/build/intermediates/cmake/debug/obj/x86_64
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/luyolung/AndroidStudio3/MontageMoment/lib-core/build/intermediates/cmake/debug/obj/x86_64
 -DCMAKE_BUILD_TYPE=Debug
--DANDROID_NDK=/Users/jimytc/work/tools/adt-bundle-mac-x86_64-20140624/sdk/ndk-bundle
--DCMAKE_TOOLCHAIN_FILE=/Users/jimytc/work/tools/adt-bundle-mac-x86_64-20140624/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
--DCMAKE_MAKE_PROGRAM=/Users/jimytc/work/tools/adt-bundle-mac-x86_64-20140624/sdk/cmake/3.6.4111459/bin/ninja
+-DANDROID_NDK=/Users/luyolung/Library/Android/sdk/ndk-bundle
+-DCMAKE_TOOLCHAIN_FILE=/Users/luyolung/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/luyolung/Library/Android/sdk/cmake/3.6.3155560/bin/ninja
 -GAndroid Gradle - Ninja
 -DANDROID_PLATFORM=android-16
 -DANDROID_TOOLCHAIN=clang

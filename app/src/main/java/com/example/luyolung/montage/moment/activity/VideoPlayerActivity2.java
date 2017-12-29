@@ -1,7 +1,5 @@
 package com.example.luyolung.montage.moment.activity;
 
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
  * Created by luyolung on 28/12/2017.
  */
 
-public class VideoPlayerActivity extends AppCompatActivity {
+public class VideoPlayerActivity2 extends AppCompatActivity {
 
     public static final String DATA_VIDEO_PATH = "path";
     public static final String DATA_IMAGE_PATH = "image_path";

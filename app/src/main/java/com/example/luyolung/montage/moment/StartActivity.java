@@ -5,8 +5,10 @@ package com.example.luyolung.montage.moment;
  */
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,7 +19,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.example.luyolung.montage.moment.activity.ConstraintLayoutActivity;
+import bolts.Continuation;
+import bolts.Task;
+import com.example.luyolung.montage.moment.Utils.MovieCreator;
 import com.example.luyolung.montage.moment.activity.MyTakePhotoDelegateActivity;
 import com.example.luyolung.montage.moment.activity.VideoAnalyzerActivity;
 import com.example.luyolung.montage.moment.activity.VideoIndexerActivity;
@@ -27,6 +31,8 @@ import com.my.core.protocol.IProgressBarView;
 import com.my.core.util.ViewUtil;
 import com.my.widget.adapter.SampleMenuAdapter;
 import com.my.widget.adapter.SampleMenuAdapter.SampleMenuItem;
+import java.io.File;
+import java.util.ArrayList;
 
 public class StartActivity
     extends AppCompatActivity
@@ -39,7 +45,10 @@ public class StartActivity
 
     Toolbar mToolbar;
     ListView mStartMenu;
-    private String mVideoPath = "/storage/emulated/0/Movies/Montage Moment/20171228_150330-1246878005.mp4";
+    private String mVideoPath = "/storage/emulated/0/Movies/Montage Moment/20171228_174327-1042092136.mp4";
+    private String mVideoMontagePath;
+
+    private ProgressDialog mProgressDialog;
 
 
     @Override
@@ -59,6 +68,13 @@ public class StartActivity
         mStartMenu = (ListView) findViewById(R.id.menu);
         mStartMenu.setAdapter(onCreateSampleMenu());
         mStartMenu.setOnItemClickListener(onClickSampleMenuItem());
+
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setTitle(getResources().getString(R.string.loading));
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
     }
 
     @Override
@@ -167,19 +183,20 @@ public class StartActivity
                         }
                     }),
                 new SampleMenuItem(
-                    "Video Analyze",
+                    "Video Analyzer",
                     "GOGO~",
                     new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(StartActivity.this, VideoAnalyzerActivity.class);
-                            intent.putExtra(VideoAnalyzerActivity.DATA_VIDEO_PATH, mVideoPath);
+                            intent.putExtra(VideoAnalyzerActivity.DATA_VIDEO_PATH,
+                                            mVideoPath);
                             startActivityForResult(intent, NAVIGATE_ANALYSIS_VIDEO);
                         }
                     }),
                 new SampleMenuItem(
                     "Video Player",
-                    "Play",
+                    "Play input video",
                     new OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -199,6 +216,67 @@ public class StartActivity
                             startActivityForResult(intent, NAVIGATE_VIDEO_INDEXER);
                         }
                     }),
+                new SampleMenuItem(
+                    "Obama testing",
+                    "O~~~~~~~~~~BAMABAMA",
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            File folder = Environment
+                                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                            mVideoMontagePath = folder.getAbsolutePath() + "/Videos/film.mp4";
+
+//                            int number_images = 3;
+//                            for (int j = 0; j < number_images; j++) {
+//                                imageList.add(folder.getAbsolutePath() + "/Obama/obama" + j + ".jpg");
+//                            }
+//
+//                            Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
+//                            intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, mVideoPath);
+//                            intent.putStringArrayListExtra(VideoPlayerActivity.DATA_IMAGE_PATH, imageList);
+//                            startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
+
+                            mProgressDialog.show();
+
+                            final MovieCreator creator = new MovieCreator(mVideoPath, mVideoMontagePath);
+                            creator.setImageList(getMontageImageList());
+
+                            creator.generateMontageVideo().continueWith(
+                                new Continuation<String, Void>() {
+                                    @Override
+                                    public Void then(Task<String> task) throws Exception {
+                                        if (task.isCancelled() || task.isFaulted()) {
+                                            return null;
+                                        }
+
+                                        mProgressDialog.hide();
+
+                                        String filePath = task.getResult();
+
+                                        Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
+                                        intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, filePath);
+                                        startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
+                                        return null;
+                                    }
+                                }, Task.UI_THREAD_EXECUTOR);
+                        }
+                    }),
+                new SampleMenuItem(
+                    "Play newest video",
+                    "GO",
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            File folder = Environment
+                                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                            mVideoMontagePath = folder.getAbsolutePath() + "/Videos/film.mp4";
+
+                            Intent intent = new Intent(StartActivity.this, VideoPlayerActivity.class);
+                            intent.putExtra(VideoPlayerActivity.DATA_VIDEO_PATH, mVideoMontagePath);
+                            startActivityForResult(intent, NAVIGATE_WATCH_VIDEO);
+                        }
+                    }),
             });
     }
 
@@ -216,4 +294,17 @@ public class StartActivity
         };
     }
 
+    public ArrayList<String> getMontageImageList() {
+        // TODO: override the hard-code path.
+        ArrayList<String> imageList = new ArrayList<>();
+        File folder = Environment
+            .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+        String path = folder.getAbsolutePath();
+        int number_images = 3;
+
+        for (int j = 0; j < number_images; j++) {
+            imageList.add(path + "/Obama/obama" + j + ".jpg");
+        }
+        return imageList;
+    }
 }

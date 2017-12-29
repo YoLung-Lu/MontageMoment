@@ -1,4 +1,0 @@
-# ninja log v5
-0	384	0	CMakeFiles/my_core_jni.dir/jni.cpp.o	d8579fafc748cfa6
-0	717	0	CMakeFiles/my_core_jni.dir/profiler.cpp.o	fd5144f6774f2fea
-718	881	0	/Users/jimytc/work/cblue/hack-projects/montage-moment/lib-core/build/intermediates/cmake/debug/obj/arm64-v8a/libmy_core_jni.so	620763ecb7dd543b
