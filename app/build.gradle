@@ -26,7 +26,9 @@ android {
     buildToolsVersion '26.0.2'
 }
 
+
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -37,6 +39,11 @@ dependencies {
     compile rootProject.ext.dep.supportConstraintLayout
 
     compile project(":lib-component")
+
+    compile 'com.parse.bolts:bolts-tasks:1.4.0'
+    compile 'com.parse.bolts:bolts-applinks:1.4.0'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.google.code.gson:gson:2.8.2'
 
     // Testing
     testCompile rootProject.ext.dep.testJunit

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.luyolung.montage.moment">
+<manifest package="com.example.luyolung.montage.moment"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT"/>
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -16,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.luyolung.montage.moment.StartActivity"
+            android:name=".StartActivity"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -30,24 +31,24 @@
             android:name=".SettingsActivity"
             android:label="@string/menu_settings">
         </activity>
-
         <activity
             android:name=".activity.ConstraintLayoutActivity"
             android:label="Constraint">
         </activity>
-
         <activity
             android:name=".activity.MyTakePhotoDelegateActivity"
             android:label="Constraint">
         </activity>
-
         <activity
             android:name=".activity.VideoPlayerActivity"
             android:label="Constraint">
         </activity>
-
         <activity
             android:name=".activity.VideoAnalyzerActivity"
+            android:label="Constraint">
+        </activity>
+        <activity
+            android:name=".activity.VideoIndexerActivity"
             android:label="Constraint">
         </activity>
     </application>
