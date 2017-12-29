@@ -12,6 +12,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        // Enabling multidex support.
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi"
+        }
     }
     buildTypes {
         debug {
@@ -22,8 +28,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     buildToolsVersion '26.0.2'
+
+    packagingOptions {
+        pickFirst 'AndroidManifest.xml'
+//        exclude 'org/bytedeco/javacpp/macosx-x86_64/libusb-1.0.dylib'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2560M"
+        jumboMode true
+    }
 }
 
 
@@ -37,13 +52,30 @@ dependencies {
     compile rootProject.ext.dep.supportAppcompatV7
     compile rootProject.ext.dep.supportDesign
     compile rootProject.ext.dep.supportConstraintLayout
+    compile rootProject.ext.dep.supportMultidex
+
+    // Bolts
+    compile rootProject.ext.dep.bolts
+
+    // OkHttp
+    compile rootProject.ext.dep.okhttp
+
+    // Gson
+    compile rootProject.ext.dep.gson
 
     compile project(":lib-component")
 
-    compile 'com.parse.bolts:bolts-tasks:1.4.0'
-    compile 'com.parse.bolts:bolts-applinks:1.4.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.1'
-    compile 'com.google.code.gson:gson:2.8.2'
+//    compile 'com.parse.bolts:bolts-tasks:1.4.0'
+//    compile 'com.parse.bolts:bolts-applinks:1.4.0'
+//    compile 'com.google.code.gson:gson:2.8.2'
+
+    // Exoplayer
+//    compile 'com.google.android.exoplayer:exoplayer:2.4.0'
+
+    // Video recorder
+    compile 'org.bytedeco:javacv:1.1'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.0.0-1.1', classifier: 'android-arm'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '2.8.1-1.1', classifier: 'android-arm'
 
     // Testing
     testCompile rootProject.ext.dep.testJunit
